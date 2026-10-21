@@ -3,6 +3,7 @@ import {CatalogPage} from '../src/pages/CatalogPage';
 import {catalogProduct,errorEnvelope,requestId} from '../src/support/contracts';
 import {stubApis} from '../src/support/mocks';
 const mock=process.env.TEST_MODE!=='integrated';
+
 test.describe('Catálogo por IDs (código Angular)',()=>{
   test.beforeEach(async ({page})=>{if(mock)await stubApis(page);});
   test('FE-020 @smoke consulta ID único via GET',async ({page})=>{

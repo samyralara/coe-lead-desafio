@@ -1,0 +1,42 @@
+ID;Situação no projeto;Escopo executado;Dependência/limitação
+PED-01;Base;Nominal e GET;PROD-001/002
+PED-02;Base;Campos inválidos;Nenhuma nova massa
+PED-03;Base parcial;0/1/101 itens;GAP-01 impede 51..100 distintos
+PED-04;Base;Quantidade -1/0/1/2/998/999/1000;PROD-001
+PED-05;Base;Comprimento productId;IDs inexistentes simulados
+PED-06;Base;Duplicidade;PROD-001
+PED-07;Base parcial;Excesso inequívoco >1MB;Limites exatos requerem confirmar bytes
+PED-08;Base;JSON malformado;Nenhuma nova massa
+PED-09;Base parcial;Inexistente sempre;Inativo/sem preço somente IDs preexistentes fornecidos
+PED-10;Base parcial;Rejeição de pedido composto e contagem API;Sem verificação direta das tabelas
+FIN-01;Base condicional;Limites do desconto;Requer IDs de produtos com preços específicos já existentes
+FIN-02;Base condicional;HALF_UP no meio centavo;Requer preço 1000.05 já existente
+FIN-03;Novo integral;Composição e totais;Seed PROD-001/002
+FIN-04;Excluído;Não executado;Alteração da regra de desconto
+FIN-05;Excluído;Não executado;Configuração inválida de desconto
+FIN-06;Excluído;Não executado;Massas conflitantes e GAP-07
+FIN-07;Excluído;Não executado;Moeda alternativa e GAP-10
+ORD-01;Base;GET por ID existente/inexistente;Pedido criado pela própria operação
+ORD-02;Base;Paginação e metadados;Serviço ativo
+ORD-03;Base;Filtro de status;Serviço ativo
+ORD-04;Base;Limites size;GAP-08 para outros parâmetros
+ORD-05;Novo integral condicionado;Ordenação em primeira e segunda páginas;2+ pedidos preexistentes ou de outras execuções
+CAT-01;Base parcial;Ativo e inexistente;Inativo opcional preexistente
+CAT-02;Novo parcial;Validade da janela corrente;Fronteiras temporais exatas não cobertas
+CAT-03;Base;Batch com found/notFound;PROD-001/002
+CAT-04;Base parcial;Lote 1/49/50/51 e duplicados;Array vazio depende GAP-12
+CAT-05;Excluído;Não executado;Instrumentação do MongoDB
+CAT-06;Excluído;Não executado;Janela sobreposta e GAP-06
+CAT-07;Excluído;Não executado;Preços inválidos e GAP-06
+INT-01;Excluído;Não executado;Call count não exposto pela API
+INT-02;Novo parcial;Rejeição de notFound e classes opcionais;IDs especiais existentes se disponíveis
+INT-03;Excluído;Não executado;Indisponibilidade controlada e GAP-03
+INT-04;Excluído;Não executado;Injeção de latência e GAP-03
+INT-05;Excluído;Não executado;Indução de 5xx/JSON incorreto e GAP-13
+INT-06;Base parcial;Request ID ecoado nos dois serviços;Propagação interna não inspecionada
+INT-07;Novo integral;3 pedidos concorrentes com dados independentes;PROD-001
+INT-08;Novo contrato proposto;AVL 50/51/100/101 IDs distintos inexistentes;GAP-01: 51..100 requer decisão; teste não prova sucesso com produtos válidos
+DB-01;Novo parcial;GET após POST e falha all-or-nothing pela API;Órfãos em banco não inspecionados
+DB-02;Excluído;Não executado;Exige mudar preço/nome e regra
+DB-03;Excluído;Não executado;Exige desligar PostgreSQL
+DB-04;Excluído;Não executado;Exige instrumentação JPA/SQL

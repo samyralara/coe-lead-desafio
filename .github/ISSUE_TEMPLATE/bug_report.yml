@@ -1,0 +1,113 @@
+
+name: "Registro de defeito"
+description: "Registrar um defeito encontrado durante os testes"
+title: "[BUG] "
+labels: ["bug"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Preencha as informações para permitir a reprodução
+        e a análise do defeito.
+
+  - type: input
+    id: test-case
+    attributes:
+      label: "ID do caso de teste"
+      description: "Ex.: PED-04, CAT-03, FE-011"
+      placeholder: "PED-04"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: "Componente afetado"
+      options:
+        - "Order Service"
+        - "Catalog Service"
+        - "Frontend Angular"
+        - "Integração"
+        - "Persistência"
+        - "Automação de testes"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: "Ambiente"
+      options:
+        - "Local"
+        - "QA"
+        - "Homologação"
+        - "Produção"
+        - "GitHub Actions"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: "Severidade proposta"
+      options:
+        - "Crítica"
+        - "Alta"
+        - "Média"
+        - "Baixa"
+    validations:
+      required: true
+
+  - type: textarea
+    id: preconditions
+    attributes:
+      label: "Pré-condições e massa utilizada"
+      description: "Informe produto, pedido, parâmetros e estado necessário."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: "Passos para reproduzir"
+      placeholder: |
+        1. Acessar...
+        2. Informar...
+        3. Executar...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: "Resultado esperado"
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: "Resultado obtido"
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: "Evidências"
+      description: "Cole links do Actions, prints, traces e logs."
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: "Versão ou commit testado"
+      placeholder: "SHA do commit ou versão"
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: "Observações adicionais"
+      description: "RequestId, HTTP status, frequência e outros dados."
